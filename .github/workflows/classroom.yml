@@ -32,10 +32,70 @@ jobs:
           csapp.o -o proxy -lpthread
         timeout: 10
         max-score: 100
+    - name: Basic-2
+      id: basic-2
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic-2
+        setup-command: ''
+        command: "./grade/basic-2.sh"
+        timeout: 10
+        max-score: 8
+    - name: Basic-3
+      id: basic-3
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic-3
+        setup-command: ''
+        command: "./grade/basic-3.sh"
+        timeout: 10
+        max-score: 8
+    - name: Basic-4
+      id: basic-4
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic-4
+        setup-command: ''
+        command: "./grade/basic-4.sh"
+        timeout: 10
+        max-score: 8
+    - name: Basic-5
+      id: basic-5
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Basic-5
+        setup-command: ''
+        command: "./grade/basic-5.sh"
+        timeout: 10
+        max-score: 8
+    - name: Concurrency
+      id: concurrency
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Concurrency
+        setup-command: ''
+        command: "./grade/concurrency.sh"
+        timeout: 10
+        max-score: 15
+    - name: Cache
+      id: cache
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Cache
+        setup-command: ''
+        command: "./grade/cache.sh"
+        timeout: 10
+        max-score: 15
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         BASIC-1_RESULTS: "${{steps.basic-1.outputs.result}}"
         COMPLIE_RESULTS: "${{steps.complie.outputs.result}}"
+        BASIC-2_RESULTS: "${{steps.basic-2.outputs.result}}"
+        BASIC-3_RESULTS: "${{steps.basic-3.outputs.result}}"
+        BASIC-4_RESULTS: "${{steps.basic-4.outputs.result}}"
+        BASIC-5_RESULTS: "${{steps.basic-5.outputs.result}}"
+        CONCURRENCY_RESULTS: "${{steps.concurrency.outputs.result}}"
+        CACHE_RESULTS: "${{steps.cache.outputs.result}}"
       with:
-        runners: basic-1,complie
+        runners: basic-1,complie,basic-2,basic-3,basic-4,basic-5,concurrency,cache
