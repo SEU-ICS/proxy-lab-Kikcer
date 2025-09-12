@@ -28,7 +28,7 @@ jobs:
       with:
         test-name: Complie
         setup-command: ''
-        command: gcc -g -Wall -c proxy.c;gcc -g -Wall -c csapp.c；gcc -g -Wall proxy.o
+        command: gcc -g -Wall -c csapp.c;gcc -g -Wall -c proxy.c;gcc -g -Wall proxy.o
           csapp.o -o proxy -lpthread
         timeout: 10
         max-score: 100
