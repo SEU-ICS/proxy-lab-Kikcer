@@ -13,78 +13,29 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: basic1
-      id: basic1
+    - name: Basic-1
+      id: basic-1
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: basic1
+        test-name: Basic-1
         setup-command: ''
         command: "./grade/basic-1.sh"
         timeout: 10
         max-score: 8
-    - name: basic2
-      id: basic2
+    - name: Complie
+      id: complie
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: basic2
+        test-name: Complie
         setup-command: ''
-        command: "./grade/basic-2.sh"
+        command: gcc -g -Wall -c proxy.c;gcc -g -Wall -c csapp.c；gcc -g -Wall proxy.o
+          csapp.o -o proxy -lpthread
         timeout: 10
-        max-score: 8
-    - name: basic3
-      id: basic3
-      uses: classroom-resources/autograding-command-grader@v1
-      with:
-        test-name: basic3
-        setup-command: ''
-        command: "./grade/basic-3.sh"
-        timeout: 10
-        max-score: 8
-    - name: basic4
-      id: basic4
-      uses: classroom-resources/autograding-command-grader@v1
-      with:
-        test-name: basic4
-        setup-command: ''
-        command: "./grade/basic-4.sh"
-        timeout: 10
-        max-score: 8
-    - name: basic5
-      id: basic5
-      uses: classroom-resources/autograding-command-grader@v1
-      with:
-        test-name: basic5
-        setup-command: ''
-        command: "./grade/basic-5.sh"
-        timeout: 10
-        max-score: 8
-    - name: Concurrency
-      id: concurrency
-      uses: classroom-resources/autograding-command-grader@v1
-      with:
-        test-name: Concurrency
-        setup-command: ''
-        command: "./grade/concurrency.sh"
-        timeout: 10
-        max-score: 15
-    - name: Cache
-      id: cache
-      uses: classroom-resources/autograding-command-grader@v1
-      with:
-        test-name: Cache
-        setup-command: ''
-        command: "./grade/cache.sh"
-        timeout: 10
-        max-score: 15
+        max-score: 100
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        BASIC1_RESULTS: "${{steps.basic1.outputs.result}}"
-        BASIC2_RESULTS: "${{steps.basic2.outputs.result}}"
-        BASIC3_RESULTS: "${{steps.basic3.outputs.result}}"
-        BASIC4_RESULTS: "${{steps.basic4.outputs.result}}"
-        BASIC5_RESULTS: "${{steps.basic5.outputs.result}}"
-        CONCURRENCY_RESULTS: "${{steps.concurrency.outputs.result}}"
-        CACHE_RESULTS: "${{steps.cache.outputs.result}}"
+        BASIC-1_RESULTS: "${{steps.basic-1.outputs.result}}"
+        COMPLIE_RESULTS: "${{steps.complie.outputs.result}}"
       with:
-        runners: basic1,basic2,basic3,basic4,basic5,concurrency,cache
+        runners: basic-1,complie
