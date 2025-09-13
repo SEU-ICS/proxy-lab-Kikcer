@@ -181,7 +181,6 @@
  }
  
  // 构造并发送规范化请求，读取并处理客户端请求头
-  * ===================================================== */
  static void build_and_forward(int clientfd, rio_t *crio,
                                const char *method, const char *uri,
                                const char *host_from_uri, const char *port_from_uri, const char *path_from_uri) {
